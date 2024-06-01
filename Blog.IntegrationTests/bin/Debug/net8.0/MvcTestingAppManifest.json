@@ -1,0 +1,7 @@
+{
+  "Blog.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\BesarKutleshi\\Desktop\\Repos\\Blog.Api\\Blog.Application",
+  "Blog.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\BesarKutleshi\\Desktop\\Repos\\Blog.Api\\Blog.Domain",
+  "Blog.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\BesarKutleshi\\Desktop\\Repos\\Blog.Api\\Blog.Infrastructure",
+  "Blog.Presentation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\BesarKutleshi\\Desktop\\Repos\\Blog.Api\\Blog.Presentation",
+  "Blog.SharedResources, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\BesarKutleshi\\Desktop\\Repos\\Blog.Api\\Blog.SharedResources"
+}

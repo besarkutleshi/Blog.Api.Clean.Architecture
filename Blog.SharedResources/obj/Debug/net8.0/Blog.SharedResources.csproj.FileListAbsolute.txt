@@ -1,0 +1,11 @@
+C:\Users\BesarKutleshi\Desktop\Repos\Blog.Api\Blog.SharedResources\bin\Debug\net8.0\Blog.SharedResources.deps.json
+C:\Users\BesarKutleshi\Desktop\Repos\Blog.Api\Blog.SharedResources\bin\Debug\net8.0\Blog.SharedResources.dll
+C:\Users\BesarKutleshi\Desktop\Repos\Blog.Api\Blog.SharedResources\bin\Debug\net8.0\Blog.SharedResources.pdb
+C:\Users\BesarKutleshi\Desktop\Repos\Blog.Api\Blog.SharedResources\obj\Debug\net8.0\Blog.SharedResources.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\BesarKutleshi\Desktop\Repos\Blog.Api\Blog.SharedResources\obj\Debug\net8.0\Blog.SharedResources.AssemblyInfoInputs.cache
+C:\Users\BesarKutleshi\Desktop\Repos\Blog.Api\Blog.SharedResources\obj\Debug\net8.0\Blog.SharedResources.AssemblyInfo.cs
+C:\Users\BesarKutleshi\Desktop\Repos\Blog.Api\Blog.SharedResources\obj\Debug\net8.0\Blog.SharedResources.csproj.CoreCompileInputs.cache
+C:\Users\BesarKutleshi\Desktop\Repos\Blog.Api\Blog.SharedResources\obj\Debug\net8.0\Blog.SharedResources.dll
+C:\Users\BesarKutleshi\Desktop\Repos\Blog.Api\Blog.SharedResources\obj\Debug\net8.0\refint\Blog.SharedResources.dll
+C:\Users\BesarKutleshi\Desktop\Repos\Blog.Api\Blog.SharedResources\obj\Debug\net8.0\Blog.SharedResources.pdb
+C:\Users\BesarKutleshi\Desktop\Repos\Blog.Api\Blog.SharedResources\obj\Debug\net8.0\ref\Blog.SharedResources.dll
