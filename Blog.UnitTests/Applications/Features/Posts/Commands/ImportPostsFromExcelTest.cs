@@ -6,6 +6,7 @@ using Blog.Infrastructure.Imports;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Moq;
+using System.Linq.Expressions;
 using Xunit;
 using static Blog.Application.Features.Posts.Commands.ImportPostsFromExcel;
 
@@ -59,7 +60,7 @@ public class ImportPostsFromExcelCommandHandlerTests
         fileMock.Setup(x => x.Length).Returns(1024);
 
         _fileSaverMock.Setup(x => x.SaveFile(It.IsAny<IFormFile>())).Returns("some/file/path");
-        _enqueueJobMock.Setup(x => x.Enqueue(It.IsAny<Func<Task>>())).Returns(string.Empty);
+        _enqueueJobMock.Setup(x => x.Enqueue(It.IsAny<Expression<Func<Task>>>())).Returns(string.Empty);
 
         var command = new ImportPostsFromExcelCommand(fileMock.Object);
         var result = await _handler.Handle(command, CancellationToken.None);
@@ -77,7 +78,7 @@ public class ImportPostsFromExcelCommandHandlerTests
         fileMock.Setup(x => x.Length).Returns(1024);
 
         _fileSaverMock.Setup(x => x.SaveFile(It.IsAny<IFormFile>())).Returns("some/file/path");
-        _enqueueJobMock.Setup(x => x.Enqueue(It.IsAny<Func<Task>>())).Returns("job-id-123");
+        _enqueueJobMock.Setup(x => x.Enqueue(It.IsAny<Expression<Func<Task>>>())).Returns("job-id-123");
 
         var command = new ImportPostsFromExcelCommand(fileMock.Object);
         var result = await _handler.Handle(command, CancellationToken.None);

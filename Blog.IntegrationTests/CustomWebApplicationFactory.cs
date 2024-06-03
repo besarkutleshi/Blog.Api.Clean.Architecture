@@ -19,7 +19,7 @@ public sealed class CustomWebApplicationFactory : WebApplicationFactory<Program>
     //    .WithCleanUp(true)
     //    .Build();
 
-    private IServiceScope _serviceScope;
+    private IServiceScope _serviceScope = null!;
     private readonly string _connectionString = "Server=BesarKutleshi;Initial Catalog=Blog_Tests;Integrated Security=True;TrustServerCertificate=True";
 
     public Task InitializeAsync()

@@ -18,7 +18,7 @@ public abstract class BaseIntegrationTest : IClassFixture<CustomWebApplicationFa
     protected readonly IMapper _mapper;
     protected readonly IRequestService _requestService;
     protected readonly Faker<IdentityUser> _userFaker;
-    private readonly string _password = "Password1.";
+    protected readonly string _password = "Password1.";
     protected readonly IAuthTokenFactory _authTokenFactory;
 
     protected BaseIntegrationTest(CustomWebApplicationFactory factory)
@@ -40,6 +40,9 @@ public abstract class BaseIntegrationTest : IClassFixture<CustomWebApplicationFa
         var identityUser = _userFaker.Generate();
 
         await _userManager.CreateAsync(identityUser, _password);
+        await _roleManager.CreateAsync(new IdentityRole { Name = identityUser.UserName + "-Role" });
+
+        await _userManager.AddToRoleAsync(identityUser, identityUser.UserName + "-Role");
 
         return identityUser;
     }
