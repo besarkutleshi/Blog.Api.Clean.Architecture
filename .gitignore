@@ -270,3 +270,16 @@ docker-compose.dcproj
 docker-compose.dcproj.user
 docker-compose.override.yml
 docker-compose.yml
+
+# Ignore all obj directories
+**/obj/
+
+# Other rules you might have
+bin/
+*.user
+*.suo
+*.bak
+*.ncb
+*.log
+*.sql
+*.sqlite
