@@ -60,7 +60,7 @@ public class PostRepositoryTests : BaseIntegrationTest
     [Fact]
     public async Task Should_Have_Error_When_Post_Not_Found_To_Delete()
     {
-        var postId = 10;
+        var postId = new Random().Next(80000, 100000);
 
         var result = await _postRepository.DeletePost(postId, It.IsAny<CancellationToken>());
 

@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Blog.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class TableCreation : Migration
+    public partial class TablesAdded : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -176,6 +178,33 @@ namespace Blog.Infrastructure.Migrations
                         column: x => x.CreatedBy,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "3fa85f64-5717-4562-b3fc-2c963f66afa2", null, "Admin", "Admin" },
+                    { "3fa85f64-5717-4562-b3fc-2c963f66afa3", null, "Public", "Public" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
+                {
+                    { "3fa85f64-5717-4562-b3fc-2c963f66afa4", 0, "4419ca43-5e8f-47cb-a756-dc1f97c5a5e2", "besarkutleshi@outlook.com", true, false, null, "besarkutleshi@outlook.com", "besarkutleshi", "AQAAAAIAAYagAAAAEDmZCiHKjbBnFycUQ4U3D+sofiE0eI/fw3MzZH7k0YXX1Luqu/wMzbsWjno5C65uSQ==", "123456", false, "183d90ba-d44d-418a-98eb-82557a10328c", false, "besarkutleshi" },
+                    { "3fa85f64-5717-4562-b3fc-2c963f66afa5", 0, "26f710b6-cb98-4511-b5c4-5b02cdbc0e32", "filanfisteku@outlook.com", true, false, null, "filanfisteku@outlook.com", "filanfisteku", "AQAAAAIAAYagAAAAEMk2eZb1INejjkE1a109y41gGx+SmWqVMiiN5WVbbroh27ry0rWJzfVDuzd/lVqmpA==", "123456", false, "3c765f87-d65f-49e2-b877-e626c8f780ac", false, "filanfisteku" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[,]
+                {
+                    { "3fa85f64-5717-4562-b3fc-2c963f66afa2", "3fa85f64-5717-4562-b3fc-2c963f66afa4" },
+                    { "3fa85f64-5717-4562-b3fc-2c963f66afa3", "3fa85f64-5717-4562-b3fc-2c963f66afa5" }
                 });
 
             migrationBuilder.CreateIndex(

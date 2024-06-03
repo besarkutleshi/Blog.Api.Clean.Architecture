@@ -2,8 +2,10 @@
 using Blog.Application.Features.Posts.Dtos.Requests;
 using Blog.Domain.Entities;
 using Blog.Domain.Interfaces;
+using Blog.Infrastructure.ConfigurationSections;
 using Blog.SharedResources;
 using Microsoft.AspNetCore.TestHost;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using System.Net.Http.Json;
@@ -14,10 +16,12 @@ public class PostsControllerTests : BaseIntegrationTest
 {
     private readonly HttpClient _httpClient;
     private readonly Mock<IPostRepository> _postRepository = new();
+    private readonly IConfiguration _configuration;
 
     public PostsControllerTests(CustomWebApplicationFactory factory)
         : base(factory)
     {
+        _configuration = serviceScope.ServiceProvider.GetRequiredService<IConfiguration>();
         _httpClient = factory.WithWebHostBuilder(builder =>
         {
             builder.ConfigureTestServices(services =>
@@ -278,7 +282,10 @@ public class PostsControllerTests : BaseIntegrationTest
 
     private async Task SignIn()
     {
-        var loginDto = new LoginDto("besarkutleshi@outlook.com", "Besar.123");
+        var adminDefaultUser = new DefaultUser();
+        _configuration.GetSection("AdminUser").Bind(adminDefaultUser);
+
+        var loginDto = new LoginDto(adminDefaultUser.Email, adminDefaultUser.Password);
 
         var response = await _httpClient.PostAsJsonAsync("/api/auth", loginDto, CancellationToken.None);
 

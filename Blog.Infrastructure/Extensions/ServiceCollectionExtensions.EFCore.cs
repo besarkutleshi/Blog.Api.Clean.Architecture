@@ -9,19 +9,15 @@ public static partial class ServiceCollectionExtensions
 {
     private static IServiceCollection AddEFCore(this IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString("eBlog");
+        services.Configure<DbConnectionStringOptions>(configuration.GetSection("DbConnectionString"));
+
+        var dbOptions = new DbConnectionStringOptions();
+        configuration.GetSection("DbConnectionString").Bind(dbOptions);
+
+        var connectionString = $"Server={dbOptions.Server};Database={dbOptions.Database};User Id={dbOptions.Username};Password={dbOptions.Password};TrustServerCertificate=True";
 
         if (!string.IsNullOrEmpty(connectionString))
         {
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseNpgsql(connectionString, sqlOptions =>
-            //    {
-            //        sqlOptions.EnableRetryOnFailure(
-            //            maxRetryCount: 2,
-            //            maxRetryDelay: TimeSpan.FromSeconds(30),
-            //            errorCodesToAdd: null!);
-            //    }));
-
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString, sqlOptions =>
                 {

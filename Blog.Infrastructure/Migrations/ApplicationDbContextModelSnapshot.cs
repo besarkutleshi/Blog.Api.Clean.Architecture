@@ -87,6 +87,20 @@ namespace Blog.Infrastructure.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "3fa85f64-5717-4562-b3fc-2c963f66afa2",
+                            Name = "Admin",
+                            NormalizedName = "Admin"
+                        },
+                        new
+                        {
+                            Id = "3fa85f64-5717-4562-b3fc-2c963f66afa3",
+                            Name = "Public",
+                            NormalizedName = "Public"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -177,6 +191,42 @@ namespace Blog.Infrastructure.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "3fa85f64-5717-4562-b3fc-2c963f66afa4",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "4419ca43-5e8f-47cb-a756-dc1f97c5a5e2",
+                            Email = "besarkutleshi@outlook.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "besarkutleshi@outlook.com",
+                            NormalizedUserName = "besarkutleshi",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDmZCiHKjbBnFycUQ4U3D+sofiE0eI/fw3MzZH7k0YXX1Luqu/wMzbsWjno5C65uSQ==",
+                            PhoneNumber = "123456",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "183d90ba-d44d-418a-98eb-82557a10328c",
+                            TwoFactorEnabled = false,
+                            UserName = "besarkutleshi"
+                        },
+                        new
+                        {
+                            Id = "3fa85f64-5717-4562-b3fc-2c963f66afa5",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "26f710b6-cb98-4511-b5c4-5b02cdbc0e32",
+                            Email = "filanfisteku@outlook.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "filanfisteku@outlook.com",
+                            NormalizedUserName = "filanfisteku",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMk2eZb1INejjkE1a109y41gGx+SmWqVMiiN5WVbbroh27ry0rWJzfVDuzd/lVqmpA==",
+                            PhoneNumber = "123456",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "3c765f87-d65f-49e2-b877-e626c8f780ac",
+                            TwoFactorEnabled = false,
+                            UserName = "filanfisteku"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -239,6 +289,18 @@ namespace Blog.Infrastructure.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "3fa85f64-5717-4562-b3fc-2c963f66afa4",
+                            RoleId = "3fa85f64-5717-4562-b3fc-2c963f66afa2"
+                        },
+                        new
+                        {
+                            UserId = "3fa85f64-5717-4562-b3fc-2c963f66afa5",
+                            RoleId = "3fa85f64-5717-4562-b3fc-2c963f66afa3"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
