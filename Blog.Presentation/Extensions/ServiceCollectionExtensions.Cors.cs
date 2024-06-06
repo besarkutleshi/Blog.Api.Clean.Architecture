@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-namespace Blog.Infrastructure.Extensions;
+﻿namespace Blog.Presentation.Extensions;
 
 public static partial class ServiceCollectionExtensions
 {

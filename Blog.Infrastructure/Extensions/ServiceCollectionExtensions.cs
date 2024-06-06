@@ -11,7 +11,6 @@ public static partial class ServiceCollectionExtensions
         AddDI(services);
         AddIdentity(services);
         AddHangfire(services, configuration);
-        AddCors(services);
 
         return services;
     }
