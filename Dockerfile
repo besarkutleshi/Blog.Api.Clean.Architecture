@@ -1,5 +1,3 @@
-#See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 USER app
 WORKDIR /app
@@ -9,11 +7,11 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Blog.Api/Blog.Presentation/Blog.Presentation.csproj", "Blog.Presentation/"]
-COPY ["Blog.Api/Blog.Application/Blog.Application.csproj", "Blog.Application/"]
-COPY ["Blog.Api/Blog.Domain/Blog.Domain.csproj", "Blog.Domain/"]
-COPY ["Blog.Api/Blog.SharedResources/Blog.SharedResources.csproj", "Blog.SharedResources/"]
-COPY ["Blog.Api/Blog.Infrastructure/Blog.Infrastructure.csproj", "Blog.Infrastructure/"]
+COPY ["Blog.Presentation/Blog.Presentation.csproj", "Blog.Presentation/"]
+COPY ["Blog.Application/Blog.Application.csproj", "Blog.Application/"]
+COPY ["Blog.Domain/Blog.Domain.csproj", "Blog.Domain/"]
+COPY ["Blog.SharedResources/Blog.SharedResources.csproj", "Blog.SharedResources/"]
+COPY ["Blog.Infrastructure/Blog.Infrastructure.csproj", "Blog.Infrastructure/"]
 RUN dotnet restore "./Blog.Presentation/Blog.Presentation.csproj"
 COPY . .
 WORKDIR "/src/Blog.Presentation"

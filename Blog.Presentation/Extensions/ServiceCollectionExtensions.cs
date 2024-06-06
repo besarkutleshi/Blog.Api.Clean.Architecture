@@ -6,6 +6,7 @@ public static partial class ServiceCollectionExtensions
     {
         AddJwtBearer(services, configuration);
         AddMiddlewares(services);
+        services.AddHealthChecks();
 
         return services;
     }

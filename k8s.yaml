@@ -1,0 +1,113 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blogapi-deployment
+spec:
+  replicas: 1  # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: blogapi
+  template:
+    metadata:
+      labels:
+        app: blogapi
+    spec:
+      containers:
+      - name: blogapi
+        image: besarkutleshi/blogapi:latest # Replace with your actual image name and tag
+        ports:
+        - containerPort: 8080  # Make sure this matches the port your application listens on
+        env:
+        - name: Serilog__Using__0
+          value: "Serilog.Sinks.Console"
+        - name: Serilog__Using__1
+          value: "Serilog.Sinks.File"
+        - name: Serilog__MinimumLevel__Default
+          value: "Information"
+        - name: Serilog__MinimumLevel__Override__Microsoft
+          value: "Warning"
+        - name: Serilog__MinimumLevel__Override__System
+          value: "Warning"
+        - name: Serilog__WriteTo__0__Name
+          value: "Console"
+        - name: Serilog__WriteTo__1__Name
+          value: "File"
+        - name: Serilog__WriteTo__1__Args__path
+          value: "logs/log-.txt"
+        - name: Serilog__WriteTo__1__Args__rollingInterval
+          value: "Day"
+        - name: Serilog__WriteTo__1__Args__rollOnFileSizeLimit
+          value: "true"
+        - name: Serilog__WriteTo__1__Args__formatter
+          value: "Serilog.Formatting.Json.JsonFormatter"
+        - name: Serilog__Enrich__0
+          value: "FromLogContext"
+        - name: Serilog__Enrich__1
+          value: "WithMachineName"
+        - name: Serilog__Enrich__2
+          value: "WithThreadId"
+        - name: Serilog__Properties__Application
+          value: "blogapi"
+        - name: AllowedHosts
+          value: "*"
+        - name: DbConnectionString__Server
+          value: "labs-tech.cxmkkqqogd1f.us-east-1.rds.amazonaws.com"
+        - name: DbConnectionString__Database
+          value: "Blog"
+        - name: DbConnectionString__Username
+          value: "admin"
+        - name: DbConnectionString__Password
+          value: "Kutleshi1404."
+        - name: DbConnectionString__IntegrationTestDatabase
+          value: "BlogIntegrationTests"
+        - name: AdminUser__Id
+          value: "3fa85f64-5717-4562-b3fc-2c963f66afa4"
+        - name: AdminUser__Email
+          value: "besarkutleshi@outlook.com"
+        - name: AdminUser__Password
+          value: "Besar.123"
+        - name: AdminUser__PasswordHash
+          value: "AQAAAAIAAYagAAAAEDmZCiHKjbBnFycUQ4U3D+sofiE0eI/fw3MzZH7k0YXX1Luqu/wMzbsWjno5C65uSQ=="
+        - name: AdminUser__Username
+          value: "besarkutleshi"
+        - name: AdminUser__EmailConfirmed
+          value: "true"
+        - name: AdminUser__PhoneNumber
+          value: "123456"
+        - name: PublicUser__Id
+          value: "3fa85f64-5717-4562-b3fc-2c963f66afa5"
+        - name: PublicUser__Email
+          value: "filanfisteku@outlook.com"
+        - name: PublicUser__Password
+          value: "Filani.123"
+        - name: PublicUser__PasswordHash
+          value: "AQAAAAIAAYagAAAAEMk2eZb1INejjkE1a109y41gGx+SmWqVMiiN5WVbbroh27ry0rWJzfVDuzd/lVqmpA=="
+        - name: PublicUser__Username
+          value: "filanfisteku"
+        - name: PublicUser__EmailConfirmed
+          value: "true"
+        - name: PublicUser__PhoneNumber
+          value: "123456"
+        - name: AdminRole__Id
+          value: "3fa85f64-5717-4562-b3fc-2c963f66afa2"
+        - name: AdminRole__Name
+          value: "Admin"
+        - name: PublicRole__Id
+          value: "3fa85f64-5717-4562-b3fc-2c963f66afa3"
+        - name: PublicRole__Name
+          value: "Public"
+        - name: tokenSecurityKey
+          value: "RhirgRldvmEjHtBcHVQ4huy4VJGtTLXd90KysYVJEpd0Z3xGXqYoYn1ZsGq8iWSfm1IFzL861WwGFWZO7LSIuribCmTqsSZNBFqlhrngE7xtawasdwss"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blogapi-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: blogapi
+  ports:
+  - protocol: TCP
+    port: 81
+    targetPort: 8080  # Make sure this matches the port your application listens on
